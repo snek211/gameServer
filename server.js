@@ -186,6 +186,6 @@ wss.on('connection', (ws) => {
   ws.on('error', () => {});
 });
 
-httpServer.listen(PORT, () => {
+httpServer.listen(PORT, '0.0.0.0', () => {
   console.log(`SECTOR 7 server running on port ${PORT}`);
 });
