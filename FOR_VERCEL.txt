@@ -1,0 +1,40 @@
+================================================================================
+CONNECT YOUR VERCEL GAME TO THIS SERVER (do this in the GAME repo, not here)
+================================================================================
+
+1) Railway
+   - Open your gameServer service → Settings → Networking.
+   - Under "Public networking", copy your domain (example: something.up.railway.app).
+
+2) WebSocket address (copy this pattern)
+   wss://PASTE-YOUR-DOMAIN-HERE
+   Use wss:// not ws:// not https://
+
+3) In your GAME project (the one Vercel deploys)
+   - Search the files for: WebSocket   OR   wss://   OR   SERVER_URL
+   - Put your full wss://... URL where the game opens the socket.
+
+4) Optional — Vercel environment variable (only if your game reads env at build time)
+   - Vercel → your project → Settings → Environment Variables → Add
+   - Name depends on your tool:
+       Vite:     VITE_WS_URL
+       Next.js:  NEXT_PUBLIC_WS_URL
+       Other:    match what your code expects
+   - Value: wss://PASTE-YOUR-DOMAIN-HERE
+   - Redeploy after saving.
+
+5) Ship
+   - Commit and push the game repo to GitHub.
+   - Wait until Vercel shows the new deployment as Ready.
+   - Open your Vercel URL and test multiplayer.
+
+6) If it fails
+   - On the game page press F12 → Console tab → read red errors.
+   - Confirm step 2 uses wss:// and the exact Railway domain.
+
+================================================================================
+Example line you might add near where the socket is created (plain browser JS):
+================================================================================
+
+const WS_URL = 'wss://YOUR-RAILWAY-DOMAIN.up.railway.app';
+const ws = new WebSocket(WS_URL);
