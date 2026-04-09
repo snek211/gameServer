@@ -1,0 +1,12 @@
+{
+  "name": "sector7-server",
+  "version": "1.0.0",
+  "description": "Sector 7 multiplayer game server",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "ws": "^8.16.0"
+  }
+}
